@@ -1,22 +1,43 @@
 <template>
   <section>
+    <div class="controls row">
+      <b-button v-on:click="seen = !seen">Add a Note</b-button>
+      <ml-note v-if="seen"></ml-note>
+    </div>
+
     <div class="search row">
       <div class="col-xs-12 search-row">
         <ml-input :qtext="qtext" :search="search" :suggest="suggest" class="search"></ml-input>
       </div>
       <div class="col-xs-12 col-sm-4 col-md-3 facets-col">
-        <ml-facets v-if="facets" :facets="facets" :toggle="toggleFacet" :active-facets="activeFacets" :negate="toggleNegatedFacet"></ml-facets>
+        <ml-facets
+          v-if="facets"
+          :facets="facets"
+          :toggle="toggleFacet"
+          :active-facets="activeFacets"
+          :negate="toggleNegatedFacet"
+        ></ml-facets>
       </div>
       <div class="col-xs-12 col-sm-8 col-md-9 results-col">
-        <i class="fa fa-refresh pull-right" :class="searchPending ? 'fa-spin' : ''"
-          v-on:click.prevent="$forceUpdate()"></i>
+        <i
+          class="fa fa-refresh pull-right"
+          :class="searchPending ? 'fa-spin' : ''"
+          v-on:click.prevent="$forceUpdate()"
+        ></i>
         <transition name="fade" mode="out-in">
           <h4 v-if="!results">Do a search to get results</h4>
           <h4 v-else-if="total === 0">No results to show</h4>
           <div v-else class="results">
             <div class="pagination-ctrls">
-              <b-pagination size="sm" v-model="page" v-on:change="pageChanged" :limit="10" boundary-links="true" :total-rows="total" :per-page="pageLength">
-              </b-pagination>
+              <b-pagination
+                size="sm"
+                v-model="page"
+                v-on:change="pageChanged"
+                :limit="10"
+                boundary-links="true"
+                :total-rows="total"
+                :per-page="pageLength"
+              ></b-pagination>
               <!--div class="col-sm-12 col-lg-5" id="search-operator-dropdowns">
                 <ml-select label="'Snippet Size'" current-selection="mlSearch.getSnippet() || 'compact'" selection-list="snippetList" on-select="setSnippet(selectionName)"></ml-select>
                 <ml-select label="'Sort'" current-selection="mlSearch.getSort() || 'score'" selection-list="sortList" on-select="setSort(selectionName)"></ml-select>
@@ -39,12 +60,16 @@ import mlResults from '@/components/ml-search/ml-results.vue';
 import mlSelect from '@/components/ml-select.vue';
 import SearchApi from '@/api/SearchApi.js';
 
+// custom imports
+import mlNote from '@/components/ml-note.vue';
+
 export default {
   name: 'SearchPage',
   props: ['type'],
   data() {
     return {
-      searchPending: false
+      searchPending: false,
+      seen: false
     };
   },
   components: {
@@ -52,7 +77,8 @@ export default {
     mlInput,
     mlMetrics,
     mlResults,
-    mlSelect
+    mlSelect,
+    mlNote
   },
   computed: {
     isLoggedIn() {

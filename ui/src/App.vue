@@ -6,7 +6,7 @@
 
     <div class="content">
       <div class="container">
-        <BreadCrumbs/>
+        <!-- <BreadCrumbs/> -->
         <transition name="fade" mode="out-in">
           <router-view/>
         </transition>
