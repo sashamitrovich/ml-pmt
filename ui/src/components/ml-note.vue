@@ -14,19 +14,77 @@
 <script>
 export default {
   name: 'ml-note',
+  props: ['type', 'id'],
   data() {
+    if (this.id) {
+      crudApi.read(this.type, this.id).then(response => {
+        this.note = JSON.parse(response.response);
+      });
+    }
     return {
-      note: {
-        text:''    
-      } 
+      note: this.initNote()
     };
   },
-  methods: {
-      save: function (e) {
-          // logging only, for now
-          console.log(this.note.text);      
-          
+  computed: {
+    profile() {
+      return this.$store.state.auth.profile || {};
+    },
+    mode() {
+      if (this.id) {
+        return 'edit';
+      } else {
+        return 'create';
       }
+    }
+  },
+  methods: {
+    save: function(e) {
+      // logging only, for now
+      console.log(this.note.text);
+      //const toast = this.toast;
+      const toast = this.$parent.$parent.$refs.toast;
+      var data = this.note;
+
+      if (this.mode === 'create') {
+        return this.$store
+          .dispatch('crud/' + this.type + '/create', {
+            data,
+            format: 'json'
+          })
+          .then(response => {
+            if (response.isError) {
+              toast.showToast(response.error, { theme: 'error' });
+            } else {
+              toast.showToast('Created', { theme: 'success' });
+              this.$router.push({
+                name: 'root.view',
+                params: { id: response.id }
+              });
+            }
+          });
+      } else {
+        // use update when in update mode
+        return this.$store
+          .dispatch('crud/' + this.type + '/update', {
+            id: this.id,
+            data,
+            format: 'json'
+          })
+          .then(response => {
+            if (response.isError) {
+              toast.showToast(response.error, { theme: 'error' });
+            } else {
+              toast.showToast('Saved', { theme: 'success' });
+              this.$router.push({ name: 'root.view', params: { id: this.id } });
+            }
+          });
+      }
+    },
+    initNote: function() {
+      return {
+        text: ''
+      };
+    }
   }
 };
 </script>
