@@ -3,7 +3,7 @@ import 'isomorphic-fetch';
 
 polyfill();
 
-var api = '/api/crud/';
+var api = '/api/note/';
 
 // TODO: consider refactoring out to utils library with identical
 // function in grove-vue-visjs-graph
@@ -42,21 +42,21 @@ function buildCrudUrl(crudType, id, params, view) {
 
 export default {
   name: 'CRUDApi',
-  view(crudType, id, view, params) {
-    return fetch(buildCrudUrl(crudType, id, params, view), {
-      method: 'GET',
-      credentials: 'same-origin'
-    }).then(
-      response => {
-        return response.text().then(text => {
-          return { isError: false, response: text };
-        });
-      },
-      error => {
-        return { isError: true, error: error };
-      }
-    );
-  },
+  // view(crudType, id, view, params) {
+  //   return fetch(buildCrudUrl(crudType, id, params, view), {
+  //     method: 'GET',
+  //     credentials: 'same-origin'
+  //   }).then(
+  //     response => {
+  //       return response.text().then(text => {
+  //         return { isError: false, response: text };
+  //       });
+  //     },
+  //     error => {
+  //       return { isError: true, error: error };
+  //     }
+  //   );
+  // },
   create(crudType, id, data, format, params) {
     console.log('params:', params);
     return fetch(buildCrudUrl(crudType, id, params), {

@@ -39,12 +39,11 @@ export default {
   },
   methods: {
     save: function(e) {
-      // logging only, for now
       console.log(this.note.text);
-      //const toast = this.toast;
       const toast = this.$parent.$parent.$refs.toast;
       var data = this.note;
 
+      // create mode (new note)
       if (this.mode === 'create') {
         return this.$store
           .dispatch('crud/' + this.type + '/create', {
@@ -63,7 +62,7 @@ export default {
             }
           });
       } else {
-        // use update when in update mode
+        // use update when in update mode (for existing note)
         return this.$store
           .dispatch('crud/' + this.type + '/update', {
             id: this.id,

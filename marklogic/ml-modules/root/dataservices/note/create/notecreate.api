@@ -1,0 +1,14 @@
+{
+  "functionName" : "notecreate",
+  "desc" : "created a note",
+  "params" : [ {
+    "name" : "text",
+    "datatype" : "string"
+  }, {
+    "name" : "type",
+    "datatype" : "string",
+    "nullable" : true
+  } ],
+  "return" : {
+    "datatype" : "jsonDocument"
+  }}

@@ -8,7 +8,8 @@
 
 plugins {
   id "net.saliman.properties" version "1.4.6"
-  id "com.marklogic.ml-gradle" version "3.10.1"
+  id "com.marklogic.ml-gradle" version "3.16.0"
+  id 'com.marklogic.ml-development-tools' version '4.1.1'
 }
 
 repositories {
@@ -85,5 +86,10 @@ task loadSampleData(type: com.marklogic.gradle.task.MlcpTask) {
   output_collections = "data,data/people"
   output_permissions = mlAppConfig.name + "-role,read," + mlAppConfig.name + "-role,update"
   output_uri_replace = ".*.zip,''"
+}
+
+
+task generateCreateNote(type: com.marklogic.client.tools.gradle.EndpointProxiesGenTask) {
+    serviceDeclarationFile = 'ml-modules/root/dataservices/note/create/service.json'
 }
 

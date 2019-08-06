@@ -308,7 +308,7 @@ function typedSearchState(searchType) {
   };
 }
 
-const types = ['all'];
+const types = ['all', 'note'];
 
 var searchModules = {};
 types.forEach(function(type) {
@@ -354,7 +354,7 @@ function typedCrudState(crudType) {
       view(context, { id, view }) {
         return crudApi.view(crudType, id, view);
       },
-      create(context, { id, data, format }) {
+      create(context, { id, data, format}) {
         return crudApi.create(crudType, id, data, format);
       },
       read(context, { id }) {

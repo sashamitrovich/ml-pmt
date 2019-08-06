@@ -2,7 +2,7 @@
   <section>
     <div class="controls row">
       <b-button v-on:click="seen = !seen">Add a Note</b-button>
-      <ml-note type="all" v-if="seen"></ml-note>
+      <ml-note type="note" v-if="seen"></ml-note>
     </div>
 
     <div class="search row">
