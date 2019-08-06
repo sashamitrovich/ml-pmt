@@ -308,10 +308,11 @@ function typedSearchState(searchType) {
   };
 }
 
-const types = ['all', 'note'];
+const searchTypes=['all']
+const crudTypes = ['all', 'note'];
 
 var searchModules = {};
-types.forEach(function(type) {
+searchTypes.forEach(function(type) {
   searchModules[type] = typedSearchState(type);
 });
 
@@ -328,7 +329,7 @@ const search = {
   },
   actions: {
     init({ commit, dispatch }) {
-      types.forEach(function(type) {
+      searchTypes.forEach(function(type) {
         dispatch(type + '/init');
       });
       commit('isInitialized', { initialized: true });
@@ -371,7 +372,7 @@ function typedCrudState(crudType) {
 }
 
 var crudModules = {};
-types.forEach(function(type) {
+crudTypes.forEach(function(type) {
   crudModules[type] = typedCrudState(type);
 });
 
@@ -388,7 +389,7 @@ const crud = {
   },
   actions: {
     init({ commit, dispatch }) {
-      types.forEach(function(type) {
+      crudTypes.forEach(function(type) {
         dispatch(type + '/init');
       });
       commit('isInitialized', { initialized: true });

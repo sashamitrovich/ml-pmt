@@ -51,6 +51,7 @@ export default {
             format: 'json'
           })
           .then(response => {
+            console.log(response)
             if (response.isError) {
               toast.showToast(response.error, { theme: 'error' });
             } else {

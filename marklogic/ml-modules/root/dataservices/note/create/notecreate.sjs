@@ -10,9 +10,7 @@ var text; // an xs.string value
 var type;  // an xs.string value
 
 
-var uri = '/notes/'+
-sem.uuidString()+
-'.json';
+var uri = sem.uuidString()+'.json';
 
 
 var options={
@@ -35,6 +33,9 @@ var root= {
 }
 
 xdmp.documentInsert(uri, root, options)
-root;
+var returnObject={}
+returnObject.root=root;
+returnObject.uri=uri
+returnObject;
 
 

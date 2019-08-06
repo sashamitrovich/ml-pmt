@@ -22,11 +22,6 @@ function buildUrl(path, params) {
 }
 
 function buildCrudUrl(crudType, id, params, view) {
-  // console.log('crudType:', crudType);
-  // console.log('id:', id);
-  // console.log('view:', view);
-  // console.log('params:', params);
-
   const path =
     crudType +
     (id ? '/' + encodeURIComponent(id) : '') +

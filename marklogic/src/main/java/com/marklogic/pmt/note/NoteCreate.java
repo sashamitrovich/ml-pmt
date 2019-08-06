@@ -3,7 +3,7 @@ package com.marklogic.pmt.note;
 // IMPORTANT: Do not edit. This file is generated.
 
 import com.marklogic.client.io.Format;
-import java.io.Reader;
+import com.marklogic.client.io.marker.AbstractWriteHandle;
 
 
 import com.marklogic.client.DatabaseClient;
@@ -32,8 +32,8 @@ public interface NoteCreate {
             }
 
             @Override
-            public Reader notecreate(String text, String type) {
-              return BaseProxy.JsonDocumentType.toReader(
+            public com.fasterxml.jackson.databind.JsonNode execute(String text, String type) {
+              return BaseProxy.JsonDocumentType.toJsonNode(
                 baseProxy
                 .request("notecreate.sjs", BaseProxy.ParameterValuesKind.MULTIPLE_ATOMICS)
                 .withSession()
@@ -51,12 +51,12 @@ public interface NoteCreate {
     }
 
   /**
-   * created a note
+   * create a note
    *
    * @param text	provides input
    * @param type	provides input
    * @return	as output
    */
-    Reader notecreate(String text, String type);
+    com.fasterxml.jackson.databind.JsonNode execute(String text, String type);
 
 }

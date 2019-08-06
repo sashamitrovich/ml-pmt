@@ -93,3 +93,10 @@ task generateCreateNote(type: com.marklogic.client.tools.gradle.EndpointProxiesG
     serviceDeclarationFile = 'ml-modules/root/dataservices/note/create/service.json'
 }
 
+task deployCreateNote(type: Copy, dependsOn: generateCreateNote) {
+    from(".") {
+        include "src/**"
+    }
+    into "$destDir"
+}
+

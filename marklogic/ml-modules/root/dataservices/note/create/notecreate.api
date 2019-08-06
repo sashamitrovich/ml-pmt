@@ -1,6 +1,6 @@
 {
-  "functionName" : "notecreate",
-  "desc" : "created a note",
+  "functionName" : "execute",
+  "desc" : "create a note",
   "params" : [ {
     "name" : "text",
     "datatype" : "string"
@@ -10,5 +10,6 @@
     "nullable" : true
   } ],
   "return" : {
-    "datatype" : "jsonDocument"
+    "datatype" : "jsonDocument",
+      "$javaClass":"com.fasterxml.jackson.databind.JsonNode"
   }}
