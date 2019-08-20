@@ -1,0 +1,4 @@
+{	
+    "endpointDirectory" : "/dataservices/note/create/",
+    "$javaClass"        : "com.marklogic.pmt.note.NoteCreate"
+ }

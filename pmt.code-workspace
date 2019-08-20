@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "/Users/smitrovi/MarkLogic/dev/grove-spring-boot"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"files.associations": {
+			"*.sjs": "javascript"
+		}
+	}
+}

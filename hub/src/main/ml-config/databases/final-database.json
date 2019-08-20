@@ -1,0 +1,51 @@
+{
+  "database-name": "%%mlFinalDbName%%",
+  "stemmed-searches": "basic",
+  "trailing-wildcard-searches": true,
+  "range-element-index": [],
+
+  "range-path-index": [{
+    "scalar-type": "string",
+    "collation": "http://marklogic.com/collation/codepoint",
+    "path-expression": "docFormat",
+    "range-value-positions": false,
+    "invalid-values": "reject"
+  }, {
+    "scalar-type": "string",
+    "collation": "http://marklogic.com/collation/codepoint",
+    "path-expression": "eyeColor",
+    "range-value-positions": false,
+    "invalid-values": "reject"
+  }, {
+    "scalar-type": "string",
+    "collation": "http://marklogic.com/collation/codepoint",
+    "path-expression": "gender",
+    "range-value-positions": false,
+    "invalid-values": "reject"
+  }, {
+    "scalar-type": "unsignedInt",
+    "collation": "",
+    "path-expression": "age",
+    "range-value-positions": false,
+    "invalid-values": "reject"
+  }],
+  "field": [],
+  "range-field-index": [],
+  "uri-lexicon": true,
+  "triple-index": true,
+  "triggers-database": "%%mlFinalTriggersDbName%%",
+  "collection-lexicon": true,
+  "schema-database": "%%mlFinalSchemasDbName%%",
+
+  "geospatial-element-pair-index": [{
+    "parent-namespace-uri": "",
+    "parent-localname": "location",
+    "latitude-namespace-uri": "",
+    "latitude-localname": "latitude",
+    "longitude-namespace-uri": "",
+    "longitude-localname": "longitude",
+    "coordinate-system": "wgs84",
+    "range-value-positions": false,
+    "invalid-values": "reject"
+  }]
+}
